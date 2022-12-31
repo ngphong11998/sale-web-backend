@@ -1,3 +1,5 @@
+//vendor: nha cung cap
+
 async function createTablePurchases(pool) {
     pool.query(`CREATE TABLE IF NOT EXISTS purchases (
         id INT AUTO_INCREMENT PRIMARY KEY,
