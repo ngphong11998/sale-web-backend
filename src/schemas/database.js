@@ -1,25 +1,27 @@
-var mysql = require('mysql');
-function connect() {
-        var con = mysql.createConnection({
-                host: "127.0.0.1",
-                // port: "3307",
-                user: "admin",
-                password: "admin123",
-                database: "web_saleproduct"
+// var mysql = require("mysql");
+// const APP_CONFIG = require("../configs/index");
 
-        });
-        con.connect(function (err) {
-                if (err) throw err;
-                console.log("DB Connected!");
-        });
+// const config = require("./");
+// async function connect() {
+//   console.log(`Function connect to DB`);
+//   var con = mysql.createConnection({
+//     host: APP_CONFIG.DB_HOST,
+//     port: APP_CONFIG.DB_PORT,
+//     user: APP_CONFIG.DB_USERNAME,
+//     password: APP_CONFIG.DB_PASSWORD,
+//     database: APP_CONFIG.DB_NAME,
+//   });
+//   con.connect(function (err) {
+//     if (err) {
+//       console.log(`Error when connect DB: `, err);
+//       throw err;
+//     }
+//     console.log("DB Connected!");
+//   });
 
-        return con;
-}
+//   return con;
+// }
 
-module.exports = {
-        connect
-}
-
-
-
-
+// module.exports = {
+//   connect,
+// };

@@ -1,11 +1,20 @@
-const dotenv = require("dotenv");
-const fs = require("fs");
+require("dotenv").config();
 
-const { ENVIRONMENT } = require("../constants/env.constant.js");
-const env = process.env.NODE_ENV || ENVIRONMENT.LOCAL;
+const env = process.env.environment || "local";
 
-const config = (env) => {
+const localConfig = require("./local.config");
+const devConfig = require("./dev.config");
+const prodConfig = require("./prod.config");
 
-}
+const config = () => {
+  const CONFIG = {
+    local: localConfig,
+    dev: devConfig,
+    prod: prodConfig,
+  };
 
-module.exports = {};
+  return CONFIG[env];
+};
+const APP_CONFIG = config();
+
+module.exports = APP_CONFIG;

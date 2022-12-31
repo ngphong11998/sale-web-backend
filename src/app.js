@@ -1,24 +1,32 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const { router } = require('./routes')
-const { initDatabase } = require('./schemas')
-const HOST='localhost'
-const PORT = 3000
+const APP_CONFIG = require("./configs/index");
+const { connect } = require("./schemas/index");
+const router = require("./routes");
 
 const start = async () => {
-    app.use(cors)
-    app.use(bodyParser.json());
+  //Use support package/library
+  app.use(cors());
+  app.use(bodyParser.json());
 
-    await initDatabase()
+  //Connect and init database
+  const pool = await connect();
+  APP_CONFIG.pool = pool;
 
-    app.use('/', router)
+  // Connect to route
+  for (const key in router) {
+    app.use("/", router[key]);
+  }
 
-    app.listen(PORT, HOST, () => {
-        console.log(`APP LISTEN AT http://${HOST}:${PORT}`)
-    })
-}
+  app.use("/category", router.categoryRouter);
 
-start()
+  //Start server
+  app.listen(APP_CONFIG.PORT, () => {
+    console.log(`APP LISTEN AT http://${APP_CONFIG.HOST}:${APP_CONFIG.PORT}`);
+  });
+};
+
+start();
