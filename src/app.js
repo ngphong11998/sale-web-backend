@@ -31,6 +31,7 @@ const start = async () => {
     app.use("/product", router.productRouter);
     app.use("/vendor", router.vendorRouter);
     app.use("/purchase", router.purchaseRouter);
+    app.use("/user", router.userRouter);
 
     //Start server
     app.listen(APP_CONFIG.PORT, () => {
