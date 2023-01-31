@@ -1,18 +1,16 @@
-const {
-    getOneCategoryService,
-} = require("../services/get-one-category.service");
+const { getOneVendorService } = require("../services/get-one-vendor.service");
 
 module.exports = async (req, res) => {
-    console.log(`API GetOne category`);
+    console.log(`API GetOne Vendor`);
     try {
         const { id } = req.params;
 
-        const resultGetOneCategory = await getOneCategoryService({ id });
+        const resultGetOneVendor = await getOneVendorService({ id });
 
         return res.json({
             code: 200,
             message: "Successed!",
-            data: resultGetOneCategory,
+            data: resultGetOneVendor,
         });
     } catch (err) {
         let message;
@@ -21,6 +19,6 @@ module.exports = async (req, res) => {
         } else {
             message = err;
         }
-        return res.status(400).json("Error in GetOne category: " + message);
+        return res.status(400).json("Error in GetOne Vendor: " + message);
     }
 };

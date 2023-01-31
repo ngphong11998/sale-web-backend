@@ -1,23 +1,23 @@
-const { dbConfig } = require("../../../schemas/");
+const { dbConfig } = require("../../../schemas");
 
-const getOneCategoryService = (input) =>
+const getListProductService = () =>
     new Promise(async (resolve, reject) => {
-        console.log(`Service function GetOne category`);
+        console.log(`Service function GetList Product`);
         try {
-            const { id } = input;
+            // const { name } = input;
 
             //validate
 
-            //GetOne category from DB
+            //Get list category from DB
             await dbConfig.pool.query(
-                `SELECT * FROM categories WHERE id=${id}`,
+                `SELECT * FROM products`,
                 function (err, result) {
                     if (err) throw err;
                     console.log(result);
                 }
             );
 
-            return resolve("Get success");
+            return resolve("Get successed!");
         } catch (err) {
             console.log({ err });
             return reject(err);
@@ -25,5 +25,5 @@ const getOneCategoryService = (input) =>
     });
 
 module.exports = {
-    getOneCategoryService,
+    getListProductService,
 };

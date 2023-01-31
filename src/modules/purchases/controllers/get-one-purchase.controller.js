@@ -1,18 +1,18 @@
 const {
-    getOneCategoryService,
-} = require("../services/get-one-category.service");
+    getOnePurchaseService,
+} = require("../services/get-one-purchase.service");
 
 module.exports = async (req, res) => {
-    console.log(`API GetOne category`);
+    console.log(`API GetOne Purchase`);
     try {
         const { id } = req.params;
 
-        const resultGetOneCategory = await getOneCategoryService({ id });
+        const resultGetOnePurchase = await getOnePurchaseService({ id });
 
         return res.json({
             code: 200,
             message: "Successed!",
-            data: resultGetOneCategory,
+            data: resultGetOnePurchase,
         });
     } catch (err) {
         let message;
@@ -21,6 +21,6 @@ module.exports = async (req, res) => {
         } else {
             message = err;
         }
-        return res.status(400).json("Error in GetOne category: " + message);
+        return res.status(400).json("Error in GetOne Purchase: " + message);
     }
 };

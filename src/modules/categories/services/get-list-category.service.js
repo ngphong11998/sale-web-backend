@@ -1,22 +1,29 @@
 const { dbConfig } = require("../../../schemas/");
 
 const getListCategoryService = (input) =>
-  new Promise(async (resolve, reject) => {
-    console.log(`Service function GetList category`);
-    try {
-      const { name } = input;
+    new Promise(async (resolve, reject) => {
+        console.log(`Service function GetList category`);
+        try {
+            // const { name } = input;
 
-      //validate
+            //validate
 
-      //Get list category from DB
+            //Get list category from DB
+            await dbConfig.pool.query(
+                `SELECT * FROM categories`,
+                function (err, result) {
+                    if (err) throw err;
+                    console.log(result);
+                }
+            );
 
-      return resolve(category);
-    } catch (err) {
-      console.log({ err });
-      return reject(err);
-    }
-  });
+            return resolve("Get success");
+        } catch (err) {
+            console.log({ err });
+            return reject(err);
+        }
+    });
 
 module.exports = {
-  getListCategoryService,
+    getListCategoryService,
 };

@@ -40,6 +40,7 @@ let dbConfig = {
   pool: null,
   connect: false,
 };
+
 async function connect() {
   var pool = mysql.createConnection({
     host: APP_CONFIG.DB_HOST,

@@ -1,16 +1,16 @@
-const { dbConfig } = require("../../../schemas/");
+const { dbConfig } = require("../../../schemas");
 
-const getOneCategoryService = (input) =>
+const getOneVendorService = (req) =>
     new Promise(async (resolve, reject) => {
-        console.log(`Service function GetOne category`);
+        console.log(`Service function GetOne vendor`);
         try {
-            const { id } = input;
+            const { id } = req;
 
             //validate
 
             //GetOne category from DB
             await dbConfig.pool.query(
-                `SELECT * FROM categories WHERE id=${id}`,
+                `SELECT * FROM vendors WHERE id=${id}`,
                 function (err, result) {
                     if (err) throw err;
                     console.log(result);
@@ -25,5 +25,5 @@ const getOneCategoryService = (input) =>
     });
 
 module.exports = {
-    getOneCategoryService,
+    getOneVendorService,
 };

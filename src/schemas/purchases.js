@@ -7,12 +7,13 @@ async function createTablePurchases(pool) {
         productID INT,
         quantity INT NOT NULL,
         datePurchase DATE,
+        modfified TIMESTAMP,
         CONSTRAINT purchase_link_vendors FOREIGN KEY (vendorID) REFERENCES vendors(id),
         CONSTRAINT purchase_link_products FOREIGN KEY (productID) REFERENCES products(id)
     )`);
     return;
-};
+}
 
 module.exports = {
-    createTablePurchases
+    createTablePurchases,
 };

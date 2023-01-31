@@ -1,18 +1,14 @@
-const {
-    createCategoryService,
-} = require("../services/create-category.service");
+const { createVendorService } = require("../services/create-vendor.service");
 
 module.exports = async (req, res) => {
-    console.log(`API create category`);
+    console.log(`API create Vendor`);
     try {
-        const { body } = req;
-
-        const resultCreateCategory = await createCategoryService(body);
+        const resultCreateVendor = await createVendorService(req);
 
         return res.json({
             code: 200,
             message: "Successed!",
-            data: resultCreateCategory,
+            data: resultCreateVendor,
         });
     } catch (err) {
         console.log({ err });
@@ -22,6 +18,6 @@ module.exports = async (req, res) => {
         } else {
             message = err;
         }
-        return res.status(400).json("Error in create category: " + message);
+        return res.status(400).json("Error in create Vendor: " + message);
     }
 };
