@@ -3,6 +3,7 @@ const productRouter = require("../modules/products/router");
 const vendorRouter = require("../modules/vendors/router");
 const purchaseRouter = require("../modules/purchases/router");
 const userRouter = require("../modules/users/router");
+const orderRouter = require("../modules/orders/router");
 
 module.exports = {
     categoryRouter: categoryRouter,
@@ -10,4 +11,5 @@ module.exports = {
     vendorRouter: vendorRouter,
     purchaseRouter: purchaseRouter,
     userRouter: userRouter,
+    orderRouter: orderRouter,
 };

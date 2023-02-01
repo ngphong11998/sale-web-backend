@@ -1,4 +1,4 @@
-const { dbConfig } = require("../../../schemas");
+const { dbConfig } = require('../../../schemas');
 
 const getListUserService = () =>
     new Promise(async (resolve, reject) => {
@@ -7,15 +7,12 @@ const getListUserService = () =>
             //validate
 
             //Get list category from DB
-            await dbConfig.pool.query(
-                `SELECT * FROM users`,
-                function (err, result) {
-                    if (err) throw err;
-                    console.log(result);
-                }
-            );
+            await dbConfig.pool.query(`SELECT * FROM users`, function (err, result) {
+                if (err) throw err;
+                console.log(result);
+            });
 
-            return resolve("Get successed!");
+            return resolve('Get successed!');
         } catch (err) {
             console.log({ err });
             return reject(err);

@@ -6,13 +6,13 @@ async function createTableOrderDetail(pool) {
             CONSTRAINT orderDetail_link_orders FOREIGN KEY(orderID) REFERENCES orders(id),
             productID INT,
             CONSTRAINT orderDetail_link_products FOREIGN KEY(productID) REFERENCES products(id),
-            price DECIMAL(15,4),
+            price DECIMAL(15,2),
             quantity INT,
-            amount DECIMAL(15,4))`
+            amount DECIMAL(15,2))`,
     );
     return;
 }
 
 module.exports = {
-    createTableOrderDetail
+    createTableOrderDetail,
 };
